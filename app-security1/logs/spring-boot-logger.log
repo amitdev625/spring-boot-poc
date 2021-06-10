@@ -1065,3 +1065,36 @@ feign.FeignException$InternalServerError: [500] during [GET] to [http://localhos
 2021-06-10 17:41:30,439 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started AppSecurity1Application in 3.037 seconds (JVM running for 897.994)
 2021-06-10 17:41:30,442 INFO org.springframework.boot.availability.ApplicationAvailabilityBean [restartedMain] Application availability state LivenessState changed to CORRECT
 2021-06-10 17:41:30,456 INFO org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2021-06-10 17:41:30,456 INFO org.springframework.boot.availability.ApplicationAvailabilityBean [restartedMain] Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2021-06-10 17:48:03,043 INFO org.springframework.boot.availability.ApplicationAvailabilityBean [Thread-23] Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2021-06-10 17:48:03,069 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [Thread-23] Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-06-10 17:48:03,070 INFO com.zaxxer.hikari.HikariDataSource [Thread-23] HikariPool-4 - Shutdown initiated...
+2021-06-10 17:48:03,077 INFO com.zaxxer.hikari.HikariDataSource [Thread-23] HikariPool-4 - Shutdown completed.
+2021-06-10 17:48:03,330 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting AppSecurity1Application using Java 15.0.1 on LAPTOP-54FPNG7V with PID 16212 (C:\Spring-Security\spring-poc-git-repo\spring-boot-poc\app-security1\target\classes started by amitk in C:\Spring-Security\spring-poc-git-repo\spring-boot-poc\app-security1)
+2021-06-10 17:48:03,331 DEBUG org.springframework.boot.StartupInfoLogger [restartedMain] Running with Spring Boot v2.5.0, Spring v5.3.7
+2021-06-10 17:48:03,331 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-06-10 17:48:03,619 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-06-10 17:48:03,639 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 19 ms. Found 2 JPA repository interfaces.
+2021-06-10 17:48:03,694 INFO org.springframework.cloud.context.scope.GenericScope [restartedMain] BeanFactory id=962d15be-a362-31f8-961d-e9fb1d203ca0
+2021-06-10 17:48:03,840 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8083 (http)
+2021-06-10 17:48:03,841 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8083"]
+2021-06-10 17:48:03,841 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-06-10 17:48:03,841 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.46]
+2021-06-10 17:48:03,876 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-06-10 17:48:03,876 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 542 ms
+2021-06-10 17:48:03,935 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-06-10 17:48:03,942 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-5 - Starting...
+2021-06-10 17:48:04,085 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-5 - Start completed.
+2021-06-10 17:48:04,086 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2021-06-10 17:48:04,273 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-06-10 17:48:04,274 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-06-10 17:48:04,464 INFO com.security.appsecurity1.advice.LoggingAdvice [restartedMain] Arguments of :: AppContextConfig.restTemplate :: []
+2021-06-10 17:48:04,474 INFO com.security.appsecurity1.advice.LoggingAdvice [restartedMain] Execution time of AppContextConfig.restTemplate :: 9 ms
+2021-06-10 17:48:04,556 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-06-10 17:48:04,609 WARN org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] Unable to start LiveReload server
+2021-06-10 17:48:05,124 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8083"]
+2021-06-10 17:48:05,131 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8083 (http) with context path ''
+2021-06-10 17:48:05,277 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started AppSecurity1Application in 2.136 seconds (JVM running for 1292.832)
+2021-06-10 17:48:05,278 INFO org.springframework.boot.availability.ApplicationAvailabilityBean [restartedMain] Application availability state LivenessState changed to CORRECT
+2021-06-10 17:48:05,279 INFO org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2021-06-10 17:48:05,280 INFO org.springframework.boot.availability.ApplicationAvailabilityBean [restartedMain] Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
