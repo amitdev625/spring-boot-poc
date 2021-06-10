@@ -26,8 +26,16 @@ public class Employee {
 	public Employee() {
 		super();
 	}
+	
+	public Employee(int id, String name, String age, long mobile) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.age = age;
+		this.mobile = mobile;
+	}
 
-	public int getId() {
+    public int getId() {
 		return id;
 	}
 

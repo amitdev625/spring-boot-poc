@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.security.appsecurity1.entity.Employee;
+import com.security.appsecurity1.model.EmployeeDTO;
 import com.security.appsecurity1.service.EmployeeService;
 
 @RestController
@@ -24,8 +25,8 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeService service;
 
-	@PostMapping("/addStudent")
-	public Employee addEmployee(@RequestBody Employee employee) {
+	@PostMapping("/addEmployee")
+	public Employee addEmployee(@RequestBody EmployeeDTO employee) {
 		Employee emp = service.addEmployee(employee);
 		return emp;
 	}

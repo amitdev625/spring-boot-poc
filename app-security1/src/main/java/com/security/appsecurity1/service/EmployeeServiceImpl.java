@@ -5,8 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.security.appsecurity1.entity.Employee;
+import com.security.appsecurity1.model.DepartmentDTO;
+import com.security.appsecurity1.model.EmployeeDTO;
 import com.security.appsecurity1.repository.EmployeeRepository;
 
 @Service
@@ -14,15 +17,26 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Autowired
 	private EmployeeRepository employeeRepository;
+	
+	@Autowired
+	private RestTemplate restTemplate;
+
 
 	@Override
-	public Employee addEmployee(Employee employee) {
+	public Employee addEmployee(EmployeeDTO employeeDTO) {
+		Employee employee = new Employee(0, employeeDTO.getName(), employeeDTO.getAge(), employeeDTO.getMobile());
 		Employee emp = employeeRepository.save(employee);
+		DepartmentDTO department = new DepartmentDTO();
+		department.setDepName(employeeDTO.getDepName());
+		department.setEmployeeId(emp.getId());
+		ResponseEntity<DepartmentDTO> response = restTemplate.postForEntity("http://localhost:8084/api/v1/addDepartment", department, DepartmentDTO.class);
+		System.out.println(response);
 		return emp;
 	}
 
 	@Override
 	public List<Employee> getAllEmployees() {
+		
 		return employeeRepository.findAll();
 	}
 
