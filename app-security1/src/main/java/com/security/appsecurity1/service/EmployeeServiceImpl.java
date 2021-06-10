@@ -11,16 +11,19 @@ import com.security.appsecurity1.entity.Employee;
 import com.security.appsecurity1.model.DepartmentDTO;
 import com.security.appsecurity1.model.EmployeeDTO;
 import com.security.appsecurity1.repository.EmployeeRepository;
+import com.security.appsecurity1.web.client.DepartmentMSFeignClient;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
 	@Autowired
 	private EmployeeRepository employeeRepository;
-	
+
 	@Autowired
 	private RestTemplate restTemplate;
 
+	@Autowired
+	private DepartmentMSFeignClient departmentMSFeignClient;
 
 	@Override
 	public Employee addEmployee(EmployeeDTO employeeDTO) {
@@ -29,14 +32,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 		DepartmentDTO department = new DepartmentDTO();
 		department.setDepName(employeeDTO.getDepName());
 		department.setEmployeeId(emp.getId());
-		ResponseEntity<DepartmentDTO> response = restTemplate.postForEntity("http://localhost:8084/api/v1/addDepartment", department, DepartmentDTO.class);
-		System.out.println(response);
+		ResponseEntity<DepartmentDTO> response = restTemplate
+				.postForEntity("http://localhost:8084/api/v1/addDepartment", department, DepartmentDTO.class);
 		return emp;
 	}
 
 	@Override
 	public List<Employee> getAllEmployees() {
-		
 		return employeeRepository.findAll();
 	}
 
@@ -47,10 +49,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public ResponseEntity<Employee> updateEmployee(Integer id, Employee employee) {
-		Employee employeeForUpadate = 
-				 employeeRepository.
-				 findById(id).
-				 orElseThrow(() -> new IllegalArgumentException("Employee Not Found For The Id " + id));
+		Employee employeeForUpadate = employeeRepository.findById(id)
+				.orElseThrow(() -> new IllegalArgumentException("Employee Not Found For The Id " + id));
 		employeeForUpadate.setAge(employee.getAge());
 		employeeForUpadate.setMobile(employee.getMobile());
 		employeeForUpadate.setName(employee.getName());
@@ -60,10 +60,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public ResponseEntity<Employee> getEmployeeByID(Integer id) {
-		return 
-			ResponseEntity.
-			ok(employeeRepository.findById(id).
-		    orElseThrow(()-> new IllegalArgumentException("Employee Not Found For The Id " + id)));
+
+		ResponseEntity<DepartmentDTO> deptByEmpId = departmentMSFeignClient.getDeptByEmpId(id);
+		System.out.println(deptByEmpId.getBody());
+
+		return ResponseEntity.ok(employeeRepository.findById(id)
+				.orElseThrow(() -> new IllegalArgumentException("Employee Not Found For The Id " + id)));
 	}
 
 }
